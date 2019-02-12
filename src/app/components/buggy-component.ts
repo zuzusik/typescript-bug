@@ -1,10 +1,12 @@
 import {SomeClass} from '../../../declarations/package';
-import {Component} from '@angular/core';
+import {Component, Inject, InjectionToken} from '@angular/core';
+
+const token = new InjectionToken('SomeClass');
 
 @Component({
   selector: 'buggy-component',
   template: '<div>test</div>'
 })
 export class BuggyComponent {
-  constructor(private prop : SomeClass) {}
+  constructor(@Inject(token) private prop : SomeClass) {}
 }
